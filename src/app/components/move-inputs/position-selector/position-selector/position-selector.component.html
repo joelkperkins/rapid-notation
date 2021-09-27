@@ -1,0 +1,124 @@
+<div class="mb-5">
+  <div class="row">
+    <span>Select Position X</span>
+  </div>
+  <div class="row mb-5 justify-content-center">
+    <div class="row justify-content-center mb-2">
+      <div
+        class="col-3 d-flex justify-content-center"
+        *ngFor="let pos of positionXOptions1"
+      >
+        <ng-template
+          [ngIf]="currX && currX.value === pos.value"
+          [ngIfElse]="defaultX"
+        >
+          <button
+            class="active button"
+            (click)="updatePosX(pos)"
+            [disabled]="checkDisabled('x', pos)"
+          >
+            {{ pos.label }}
+          </button>
+        </ng-template>
+        <ng-template #defaultX>
+          <button
+            class="button"
+            (click)="updatePosX(pos)"
+            [disabled]="checkDisabled('x', pos)"
+          >
+            {{ pos.label }}
+          </button>
+        </ng-template>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div
+        class="col-3 d-flex justify-content-center"
+        *ngFor="let pos of positionXOptions2"
+      >
+        <ng-template
+          [ngIf]="currX && currX.value === pos.value"
+          [ngIfElse]="defaultX"
+        >
+          <button
+            class="active button"
+            (click)="updatePosX(pos)"
+            [disabled]="checkDisabled('x', pos)"
+          >
+            {{ pos.label }}
+          </button>
+        </ng-template>
+        <ng-template #defaultX>
+          <button
+            class="button"
+            (click)="updatePosX(pos)"
+            [disabled]="checkDisabled('x', pos)"
+          >
+            {{ pos.label }}
+          </button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <span>Select Position Y</span>
+  </div>
+  <div class="row justify-content-center">
+    <div class="row justify-content-center mb-2">
+      <div
+        class="col-3 d-flex justify-content-center"
+        *ngFor="let pos of positionYOptions1"
+      >
+        <ng-template
+          [ngIf]="currY && currY.value === pos.value"
+          [ngIfElse]="defaultX"
+        >
+          <button
+            class="active button"
+            (click)="updatePosY(pos)"
+            [disabled]="checkDisabled('y', pos)"
+          >
+            {{ pos.label }}
+          </button>
+        </ng-template>
+        <ng-template #defaultX>
+          <button
+            class="button"
+            (click)="updatePosY(pos)"
+            [disabled]="checkDisabled('y', pos)"
+          >
+            {{ pos.label }}
+          </button>
+        </ng-template>
+      </div>
+    </div>
+    <div class="row justify-content-between" disabled>
+      <div
+        class="col-3 d-flex justify-content-center"
+        *ngFor="let pos of positionYOptions2"
+      >
+        <ng-template
+          [ngIf]="currY && currY.value === pos.value"
+          [ngIfElse]="defaultX"
+        >
+          <button
+            class="active button"
+            (click)="updatePosY(pos)"
+            [disabled]="checkDisabled('y', pos)"
+          >
+            {{ pos.label }}
+          </button>
+        </ng-template>
+        <ng-template #defaultX>
+          <button
+            class="button"
+            (click)="updatePosY(pos)"
+            [disabled]="checkDisabled('y', pos)"
+          >
+            {{ pos.label }}
+          </button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

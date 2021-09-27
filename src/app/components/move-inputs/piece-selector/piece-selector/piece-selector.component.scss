@@ -1,0 +1,16 @@
+.button {
+  width: 5rem;
+  font-size: 3rem;
+  font-family: "Oswald";
+  border-radius: 25%;
+  background-color: transparent;
+}
+
+.active {
+  background-color: gold;
+  border: double 2px black;
+}
+
+.button-image {
+  height: 3rem;
+}
