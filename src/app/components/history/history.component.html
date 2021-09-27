@@ -38,16 +38,6 @@
       Send to Email
     </button>
   </form>
-  <ng-template #startExport>
-    <button
-      mat-button
-      color="primary"
-      (click)="export()"
-      [disabled]="getEmail === true && emailAddress === mull"
-    >
-      Export PGN
-    </button>
-  </ng-template>
   <div class="row">
     <div class="col-6 d-flex" *ngFor="let move of moveHistory; let i = index">
       <ng-template [ngIf]="i === 0 || i % 2 === 0" [ngIfElse]="black">

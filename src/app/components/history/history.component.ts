@@ -46,7 +46,6 @@ export class HistoryComponent implements OnInit, OnDestroy {
     localStorage.setItem("email", email);
     const pgn = this.chess.getPgn();
     const url = `mailto:${email}?subject=Chess%20Game&body=${pgn}`;
-    console.log(this.emailUrl);
     const ele = document.getElementById("email-link");
     ele.setAttribute("href", url);
     document.getElementById("email-link").click();
