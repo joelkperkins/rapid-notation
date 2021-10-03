@@ -1,32 +1,34 @@
-<div class="row">
-  <button
-    class="p-3"
-    mat-raised-button
-    color="primary"
-    [disabled]="submitReady !== true"
-    (click)="submitMove()"
-  >
-    <ng-template [ngIf]="moveSAN === null" [ngIfElse]="moveSan">
-      <span class="move-font"
-        >{{ activePiece.label }}{{ activePiece.modifier }} {{ activeX.label
-        }}{{ activeY.label }}
-      </span>
-    </ng-template>
-    <ng-template #moveSan>
-      <span class="move-font">{{ moveSAN }}</span>
-    </ng-template>
-  </button>
+<div class="container move-index">
+  <div class="row">
+    <button
+      class="p-3"
+      mat-raised-button
+      color="primary"
+      [disabled]="submitReady !== true"
+      (click)="submitMove()"
+    >
+      <ng-template [ngIf]="moveSAN === null" [ngIfElse]="moveSan">
+        <span class="move-font"
+          >{{ activePiece.label }}{{ activePiece.modifier }} {{ activeX.label
+          }}{{ activeY.label }}
+        </span>
+      </ng-template>
+      <ng-template #moveSan>
+        <span class="move-font">{{ moveSAN }}</span>
+      </ng-template>
+    </button>
+  </div>
+  <app-piece-selector
+    [currentPiece]="activePiece"
+    (newPieceSelected)="newSelection($event)"
+    [validNextMoves]="validNextMoves"
+  ></app-piece-selector>
+  <app-position-selector
+    [activePiece]="activePiece"
+    [currX]="activeX"
+    [currY]="activeY"
+    (newPosition)="newPosition($event)"
+    [validNextMoves]="validNextMoves"
+  ></app-position-selector>
+  <app-history></app-history>
 </div>
-<app-piece-selector
-  [currentPiece]="activePiece"
-  (newPieceSelected)="newSelection($event)"
-  [validNextMoves]="validNextMoves"
-></app-piece-selector>
-<app-position-selector
-  [activePiece]="activePiece"
-  [currX]="activeX"
-  [currY]="activeY"
-  (newPosition)="newPosition($event)"
-  [validNextMoves]="validNextMoves"
-></app-position-selector>
-<app-history></app-history>
