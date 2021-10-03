@@ -93,7 +93,7 @@ export class ChessService {
 
   getPgn() {
     this.game.header("White", "Magnus", "Black", "Hikaru");
-    return this.game.fen();
+    return this.game.pgn();
   }
 
   getTurn() {
