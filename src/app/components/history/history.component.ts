@@ -15,10 +15,6 @@ export class HistoryComponent implements OnInit, OnDestroy {
   panelOpenState: boolean = false;
   emailUrl: string = "";
   getEmail: boolean = false;
-  emailFormControl = new FormControl(localStorage.getItem("email"), [
-    Validators.required,
-    Validators.email,
-  ]);
 
   constructor(private chess: ChessService) {}
 
@@ -30,24 +26,5 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.historySubscription.unsubscribe();
-  }
-
-  export() {
-    const email = this.emailFormControl.value;
-    if (email) {
-      this.generatePGNEmail();
-    } else {
-      this.getEmail = true;
-    }
-  }
-
-  generatePGNEmail() {
-    const email = this.emailFormControl.value;
-    localStorage.setItem("email", email);
-    const pgn = this.chess.getPgn();
-    const url = `mailto:${email}?subject=Chess%20Game&body=${pgn}`;
-    const ele = document.getElementById("email-link");
-    ele.setAttribute("href", url);
-    document.getElementById("email-link").click();
   }
 }

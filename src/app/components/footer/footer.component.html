@@ -1,11 +1,17 @@
-<div class="row">
+<div class="row justify-content-evenly align-items-center">
+  <button mat-fab color="warn" (click)="endGame()">
+    <mat-icon>delete</mat-icon>
+  </button>
   <button
-    class="p-3"
+    class="d-flex col-4 justify-content-center p-3"
     mat-raised-button
     color="primary"
     [disabled]="submitReady !== true"
     (click)="submitMove()"
   >
     <span class="move-font">{{ moveSAN }}</span>
+  </button>
+  <button mat-fab color="accent" (click)="openDialog()">
+    <mat-icon>email</mat-icon>
   </button>
 </div>

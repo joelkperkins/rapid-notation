@@ -18,6 +18,9 @@ import { MatExpansionModule } from "@angular/material/expansion";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
+import { MatDialogModule } from "@angular/material/dialog";
+import { EmailDialogComponent } from "./components/email-dialog/email-dialog.component";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +30,7 @@ import { MatButtonToggleModule } from "@angular/material/button-toggle";
     PositionSelectorComponent,
     HistoryComponent,
     FooterComponent,
+    EmailDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,9 @@ import { MatButtonToggleModule } from "@angular/material/button-toggle";
     FormsModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatDialogModule,
   ],
+  entryComponents: [EmailDialogComponent],
   providers: [],
   bootstrap: [AppComponent],
 })
