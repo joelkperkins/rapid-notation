@@ -1,97 +1,59 @@
-<div class="mb-5">
-  <div class="row">
-    <span>Select Piece</span>
-  </div>
-  <div class="row justify-content-center mb-2">
-    <div
-      class="col d-flex justify-content-center align-items-center"
-      *ngFor="let option of pieceOptions1"
+<div class="row">
+  <span>Select Piece</span>
+</div>
+<div class="row justify-content-center mb-2">
+  <div
+    class="col d-flex justify-content-center align-items-center"
+    *ngFor="let option of pieceOptions1"
+  >
+    <button
+      [class]="
+        currentPiece && option.value === currentPiece.value
+          ? 'active button'
+          : 'button'
+      "
+      (click)="updatePieceSelection(option)"
+      [disabled]="!validPieces[option.value]"
     >
-      <ng-template
-        [ngIf]="currentPiece && option.value === currentPiece.value"
-        [ngIfElse]="default1"
-      >
-        <button
-          class="active button"
-          (click)="updatePieceSelection(option)"
-          [disabled]="!validPieces[option.value]"
-        >
-          <img
-            class="my-2 button-image"
-            [src]="activeTurn === 'w' ? option.white : option.black"
-          />
-        </button>
-      </ng-template>
-      <ng-template #default1>
-        <button
-          class="button"
-          (click)="updatePieceSelection(option)"
-          [disabled]="!validPieces[option.value]"
-        >
-          <img
-            class="my-2 button-image"
-            [src]="activeTurn === 'w' ? option.white : option.black"
-          />
-        </button>
-      </ng-template>
-    </div>
+      <img
+        class="my-2 button-image"
+        [src]="activeTurn === 'w' ? option.white : option.black"
+      />
+    </button>
   </div>
-  <div class="row justify-content-center">
-    <div
-      class="col d-flex justify-content-center align-items-center"
-      *ngFor="let option of pieceOptions2"
+</div>
+<div class="row justify-content-center">
+  <div
+    class="col d-flex justify-content-center align-items-center"
+    *ngFor="let option of pieceOptions2"
+  >
+    <button
+      [class]="
+        currentPiece && option.value === currentPiece.value
+          ? 'active button'
+          : 'button'
+      "
+      (click)="updatePieceSelection(option)"
+      [disabled]="!validPieces[option.value]"
     >
-      <ng-template
-        [ngIf]="currentPiece && option.value === currentPiece.value"
-        [ngIfElse]="default2"
-      >
-        <button
-          class="active button"
-          (click)="updatePieceSelection(option)"
-          [disabled]="!validPieces[option.value]"
-        >
-          <img
-            class="my-2 button-image"
-            [src]="activeTurn === 'w' ? option.white : option.black"
-          />
-        </button>
-      </ng-template>
-      <ng-template #default2>
-        <button
-          class="button"
-          (click)="updatePieceSelection(option)"
-          [disabled]="!validPieces[option.value]"
-        >
-          <img
-            class="my-2 button-image"
-            [src]="activeTurn === 'w' ? option.white : option.black"
-          />
-        </button>
-      </ng-template>
-    </div>
+      <img
+        class="my-2 button-image"
+        [src]="activeTurn === 'w' ? option.white : option.black"
+      />
+    </button>
   </div>
-  <div class="row justify-content-center" *ngIf="ambiguousInput">
-    <span class="col-12 d-flex justify-content-center">which piece?</span>
-    <div
-      class="col-6 d-flex justify-content-center"
-      *ngFor="let move of ambiguousKnightMoves"
+</div>
+<div class="row justify-content-center" *ngIf="ambiguousInput">
+  <span class="col-12 d-flex justify-content-center">which piece?</span>
+  <div
+    class="col-6 d-flex justify-content-center"
+    *ngFor="let move of ambiguousKnightMoves"
+  >
+    <button
+      [class]="currentPiece.modifier === move ? 'active button' : 'button'"
+      (click)="updateAmbiguosPieceSelection(move)"
     >
-      <ng-template
-        [ngIf]="currentPiece.modifier === move"
-        [ngIfElse]="defaultUpdate"
-      >
-        <button
-          class="active button"
-          (click)="updateAmbiguosPieceSelection(move)"
-        >
-          {{ move }}
-        </button>
-      </ng-template>
-      <ng-template #defaultUpdate>
-        <button class="button" (click)="updateAmbiguosPieceSelection(move)">
-          {{ move }}
-        </button>
-      </ng-template>
-    </div>
+      {{ move }}
+    </button>
   </div>
 </div>

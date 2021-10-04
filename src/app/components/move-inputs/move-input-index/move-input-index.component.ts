@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { PieceModel } from "src/app/models/piece/piece.model";
 import { PositionModel } from "src/app/models/position/position.model";
 import { ChessService } from "src/app/services/chess.service";
@@ -9,15 +9,15 @@ import { ChessService } from "src/app/services/chess.service";
   styleUrls: ["./move-input-index.component.scss"],
 })
 export class MoveInputIndexComponent implements OnInit {
-  validNextMoves: any = null;
-
   // board input
-  activePiece: PieceModel = new PieceModel({});
-  activeX: PositionModel = new PositionModel({});
-  activeY: PositionModel = new PositionModel({});
-  moveSAN: string = null;
+  @Input() activePiece: PieceModel = null;
+  @Input() activeX: PositionModel = null;
+  @Input() activeY: PositionModel = null;
+  @Input() moveSAN: string = null;
+  @Output() newMoveSAN = new EventEmitter<string>();
 
   // board validation
+  validNextMoves: any = null;
   submitReady: boolean = false;
   ambiguousKnightMoves: any = null;
   knightOptions: any = null;
@@ -26,27 +26,7 @@ export class MoveInputIndexComponent implements OnInit {
 
   constructor(private chess: ChessService) {}
 
-  ngOnInit() {
-    this.chess.resetBoard.subscribe(() => {
-      this.getMoves();
-      this.activePiece = new PieceModel({});
-      this.activeX = new PositionModel({});
-      this.activeY = new PositionModel({});
-      this.submitReady = false;
-    });
-  }
-
-  getMoves() {
-    this.validNextMoves = this.chess.getValidMoves(true);
-  }
-
-  submitMove() {
-    this.updateGame();
-  }
-
-  updateGame() {
-    this.chess.submitMove(this.moveSAN);
-  }
+  ngOnInit() {}
 
   newSelection(event) {
     this.selectPiece(event);
@@ -79,7 +59,6 @@ export class MoveInputIndexComponent implements OnInit {
       const y = this.activeY.value as string;
       let piece = this.activePiece.value as string;
       const moves = this.chess.getValidMoves(true).filter((m) => {
-        console.log(m);
         const pieceName = piece.toLowerCase();
         const positionName = x + y;
         if (m.piece === pieceName && m.to === positionName) {
@@ -92,28 +71,10 @@ export class MoveInputIndexComponent implements OnInit {
           }
         }
       });
-      console.log(moves);
       if (moves[0]) {
         this.moveSAN = moves[0].san;
-        this.submitReady = true;
+        this.newMoveSAN.emit(this.moveSAN);
       }
-    }
-  }
-
-  getPieceName(p) {
-    switch (p) {
-      case "K":
-        return "King";
-      case "Q":
-        return "Queen";
-      case "R":
-        return "Rook";
-      case "B":
-        return "Bishop";
-      case "N":
-        return "Knight";
-      case "P":
-        return "Pawn";
     }
   }
 

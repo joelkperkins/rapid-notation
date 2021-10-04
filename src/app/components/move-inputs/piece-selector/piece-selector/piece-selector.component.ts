@@ -9,7 +9,6 @@ import { PieceModel } from "../../../../models/piece/piece.model";
 })
 export class PieceSelectorComponent implements OnInit {
   @Input() currentPiece: PieceModel = null;
-  @Input() validNextMoves: any = null;
   @Output() newPieceSelected = new EventEmitter<PieceModel>();
   validPieces: any = null;
   ambiguousInput: boolean = null;
