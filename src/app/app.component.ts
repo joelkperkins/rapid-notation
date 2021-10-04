@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   // board validation
   submitReady: boolean = false;
 
-  constructor(private chess: ChessService, public dialog: MatDialog) {}
+  constructor(private chess: ChessService) {}
 
   ngOnInit() {
     this.chess.resetBoard.subscribe(() => {
@@ -32,21 +32,9 @@ export class AppComponent implements OnInit {
   }
 
   newMoveSAN(event) {
-    console.log(event);
     if (event) {
       this.moveSAN = event;
       this.submitReady = true;
     }
-  }
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(EmailDialogComponent, {
-      width: "250px",
-      data: { email: null },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log("The dialog was closed");
-    });
   }
 }

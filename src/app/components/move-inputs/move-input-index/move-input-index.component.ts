@@ -72,8 +72,7 @@ export class MoveInputIndexComponent implements OnInit {
         }
       });
       if (moves[0]) {
-        this.moveSAN = moves[0].san;
-        this.newMoveSAN.emit(this.moveSAN);
+        this.newMoveSAN.emit(moves[0].san);
       }
     }
   }

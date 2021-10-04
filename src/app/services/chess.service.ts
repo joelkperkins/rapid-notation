@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import Chess from "chess.js";
 import { Subject, BehaviorSubject, Observable } from "rxjs";
+import { PieceModel } from "../models/piece/piece.model";
 
 @Injectable({
   providedIn: "root",
@@ -8,12 +9,10 @@ import { Subject, BehaviorSubject, Observable } from "rxjs";
 export class ChessService {
   game: any = new Chess();
 
-  // get observable for span types
   private _moveHistory: Subject<[]> = new BehaviorSubject<[]>([]);
   public readonly moveHistory: Observable<[]> =
     this._moveHistory.asObservable();
 
-  // get observable for span types
   private _resetBoard: Subject<boolean> = new BehaviorSubject<boolean>(false);
   public readonly resetBoard: Observable<boolean> =
     this._resetBoard.asObservable();
@@ -21,9 +20,9 @@ export class ChessService {
   constructor() {}
 
   endGame() {
-    this.game.clear();
-    this._moveHistory.next(this.game.history());
     this._resetBoard.next(true);
+    this.game = new Chess();
+    this._moveHistory.next(this.game.history());
   }
 
   submitMove(move) {
@@ -49,9 +48,8 @@ export class ChessService {
       }, {});
   }
 
-  getValidPositions(piece, currX) {
+  getValidPositions(piece) {
     const moves = this.getValidMoves(true);
-    console.log(moves);
     return moves.filter((m) => m.piece === piece.value.toLowerCase());
   }
 

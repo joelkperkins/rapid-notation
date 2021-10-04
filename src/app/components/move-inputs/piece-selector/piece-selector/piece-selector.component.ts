@@ -70,7 +70,6 @@ export class PieceSelectorComponent implements OnInit {
       this.getValidMoveOptions();
       this.ambiguousKnightMoves = this.chess.getAmbiguousKnight();
       this.ambiguousRookMoves = this.chess.getAmbiguousRook();
-      this.currentPiece = null;
       this.ambiguousInput = false;
       this.activeTurn = this.chess.getTurn();
     });
@@ -82,6 +81,7 @@ export class PieceSelectorComponent implements OnInit {
 
   updatePieceSelection(event) {
     this.currentPiece = event;
+    debugger;
     if (this.ambiguousKnightMoves && this.currentPiece.value === "N") {
       this.ambiguousInput = true;
     } else if (this.ambiguousRookMoves && this.currentPiece.value === "R") {
@@ -94,5 +94,6 @@ export class PieceSelectorComponent implements OnInit {
   updateAmbiguosPieceSelection(event) {
     this.currentPiece.modifier = event;
     this.newPieceSelected.emit(this.currentPiece);
+    this.currentPiece.modifier = null;
   }
 }
