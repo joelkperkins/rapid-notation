@@ -23,7 +23,7 @@ interface IPosition {
   styleUrls: ["./position-selector.component.scss"],
 })
 export class PositionSelectorComponent implements OnInit, OnChanges {
-  @Input() activePiece: PieceModel = new PieceModel({});
+  @Input() activePiece: PieceModel = null;
   @Input() currX: PositionModel = null;
   @Input() currY: PositionModel = null;
   validPositions: any = null;
@@ -125,7 +125,7 @@ export class PositionSelectorComponent implements OnInit, OnChanges {
     for (const input in changes) {
       if (changes.hasOwnProperty(input)) {
         if (input === "activePiece") {
-          if (this.activePiece.value) {
+          if (this.activePiece && this.activePiece.value) {
             this.initializePositions();
           }
         }
