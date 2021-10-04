@@ -26,7 +26,6 @@ export class PositionSelectorComponent implements OnInit, OnChanges {
   @Input() activePiece: PieceModel = new PieceModel({});
   @Input() currX: PositionModel = null;
   @Input() currY: PositionModel = null;
-  @Input() validNextMoves: any = null;
   validPositions: any = null;
   validPositionsX: any = null;
   validPositionsY: any = null;

@@ -1,0 +1,12 @@
+{{ activePiece | json }}
+<div class="row">
+  <button
+    class="p-3"
+    mat-raised-button
+    color="primary"
+    [disabled]="submitReady !== true"
+    (click)="submitMove()"
+  >
+    <span class="move-font">{{ moveSAN }}</span>
+  </button>
+</div>
