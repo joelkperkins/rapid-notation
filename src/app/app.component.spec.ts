@@ -7,6 +7,7 @@ import { MoveInputIndexComponent } from "./components/move-inputs/move-input-ind
 import { PositionSelectorComponent } from "./components/move-inputs/position-selector/position-selector/position-selector.component";
 import { PieceSelectorComponent } from "./components/move-inputs/piece-selector/piece-selector/piece-selector.component";
 import { HistoryComponent } from "./components/history/history.component";
+import { FooterComponent } from "./components/footer/footer.component";
 
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
@@ -38,6 +39,7 @@ describe("AppComponent", () => {
         PositionSelectorComponent,
         PieceSelectorComponent,
         HistoryComponent,
+        FooterComponent,
       ],
     }).compileComponents();
   }));

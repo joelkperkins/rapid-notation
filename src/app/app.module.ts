@@ -9,6 +9,7 @@ import { MoveInputIndexComponent } from "./components/move-inputs/move-input-ind
 import { PieceSelectorComponent } from "./components/move-inputs/piece-selector/piece-selector/piece-selector.component";
 import { PositionSelectorComponent } from "./components/move-inputs/position-selector/position-selector/position-selector.component";
 import { HistoryComponent } from "./components/history/history.component";
+import { FooterComponent } from "./components/footer/footer.component";
 
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
@@ -25,6 +26,7 @@ import { MatButtonToggleModule } from "@angular/material/button-toggle";
     PieceSelectorComponent,
     PositionSelectorComponent,
     HistoryComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
