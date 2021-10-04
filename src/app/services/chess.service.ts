@@ -20,9 +20,16 @@ export class ChessService {
 
   constructor() {}
 
+  endGame() {
+    this.game.clear();
+    this._moveHistory.next(this.game.history());
+    this._resetBoard.next(true);
+  }
+
   submitMove(move) {
     const res = this.game.move(move);
     this._moveHistory.next(this.game.history());
+    // reset board inputs
     this._resetBoard.next(true);
   }
 
