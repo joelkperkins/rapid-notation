@@ -1,1 +1,13 @@
-<app-move-input-index></app-move-input-index>
+<div class="view">
+  <div class="input">
+    <app-move-input-index
+      [activePiece]="activePiece"
+      [activeX]="activeX"
+      [activeY]="activeY"
+      (newMoveSAN)="newMoveSAN($event)"
+    ></app-move-input-index>
+  </div>
+  <div class="footer">
+    <app-footer [moveSAN]="moveSAN" [submitReady]="submitReady"></app-footer>
+  </div>
+</div>

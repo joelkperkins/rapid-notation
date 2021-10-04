@@ -1,3 +1,15 @@
 .app {
   max-width: 500px;
 }
+
+.view {
+  background-color: #f6f1f9;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  margin-top: auto;
+}
