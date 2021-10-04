@@ -1,6 +1,4 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { PieceModel } from "src/app/models/piece/piece.model";
-import { PositionModel } from "src/app/models/position/position.model";
 import { ChessService } from "src/app/services/chess.service";
 
 @Component({
